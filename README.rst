@@ -1,29 +1,42 @@
-Module consoletest -- a framework for running shellscripts examples.
+Module consoletest.
+===================
 
-In simplest use, end each module M to be tested with:
+Framework for running console shell examples.
 
-#python M.py
-'''
- $ echo test
- test
-'''
+Simple Usage: Checking Examples in a Text File:
 
-def _test():
+Another simple application of consoletest is testing interactive examples in a text file. This can be done with the testfile() function::
+
     import consoletest
-    consoletest.testmod()
-
-if __name__ == "__main__":
-    _test()
+    consoletest.testmod("example.txt")
 
 
-Then running the module as a script will cause the examples in the docstrings to get executed and verified:
+That short script executes and verifies any interactive Python examples contained in the file example.txt.
 
-    $ python M.py
+::
+    The example module
+    ======================
 
-This won't display anything unless an example fails, in which case the failing example(s) and the cause(s) of the failure(s) are printed to stdout, and the final line of output is "Test failed.".
+    This is an example text file in reStructuredText format.
+    
+        $ echo Test
+        test exemple Failed
 
-Run it with the -v switch instead and a detailed report of all examples tried is printed to stdout, along with assorted summaries at the end.
 
-You can force verbose mode by passing "verbose=True" to testmod, or prohibit it by passing "verbose=False".  In either of those cases, sys.argv is not examined by testmod.
+Running doctest.testfile("example.txt") then finds the error in this documentation. This won't display anything unless an example fails, in which case the failing example(s) and the cause(s) of the failure(s) are printed to stdout, and the final line of output is "Test failed.".
 
-There are a variety of other ways to run consoletest, including integration with the unittest framework, and support for running text files containing doctests.  There are also many ways to override parts of doctest's default behaviors.  See the Library Reference Manual for details.
+::
+
+    File "./example.txt", line 6, in example.txt
+    Failed example:
+        echo Test
+    Expected:
+        test exemple Failed
+    Got:
+        Test
+
+
+testfile() won’t display anything unless an example fails. If an example does fail, then the failing example(s) and the cause(s) of the failure(s) are printed to stdout, using the same format.
+
+
+
