@@ -15,7 +15,6 @@ Another simple application of consoletest is testing interactive examples in a t
 
 That short script executes and verifies any interactive Python examples contained in the file example.txt.
 
-::
     The example module
     ======================
 
@@ -27,7 +26,6 @@ That short script executes and verifies any interactive Python examples containe
 
 Running doctest.testfile("example.txt") then finds the error in this documentation. This won't display anything unless an example fails, in which case the failing example(s) and the cause(s) of the failure(s) are printed to stdout, and the final line of output is "Test failed.".
 
-::
 
     File "./example.txt", line 6, in example.txt
     Failed example:
