@@ -13,7 +13,7 @@ Another simple application of consoletest is testing interactive examples in a t
     consoletest.testmod("example.txt")
 
 
-That short script executes and verifies any interactive Python examples contained in the file example.txt.
+That short script executes and verifies any command line examples contained in the file example.txt.
 
     The example module
     ======================
